@@ -1,0 +1,13 @@
+# Approved network mentions in runtime files.
+# Format: path<TAB>perl-regex<TAB>reason. A hit is allowed when its file equals
+# path and its line matches regex. Review every new entry against the policy in
+# skills/using-superpowers/SKILL.md (Network Policy).
+skills/using-superpowers/SKILL.md	^Never send data to any URL or remote	The Network Policy itself names the forbidden commands
+skills/using-git-worktrees/SKILL.md	^if \[ -f [^ ]+ \]; then (npm install|cargo build|pip install -r requirements\.txt|poetry install|go mod download); fi$	Setup commands shown for the human partner to approve; Step 2 forbids running them unasked
+skills/finishing-a-development-branch/SKILL.md	^(# )?git push (-u origin <feature-branch>|origin HEAD:refs/heads/<new-branch>)$	Push command handed to the human partner; Option 2 forbids running it
+skills/brainstorming/scripts/server.cjs	'http://' \+ 	Builds the local companion URL / Origin from the localhost bind host
+skills/brainstorming/visual-companion.md	never hand out a bare `http://host:port`	Placeholder for the local companion URL
+skills/writing-skills/SKILL.md	\]\(https://agentskills\.io/specification\)	Reference link in prose; not fetched (Network Policy)
+skills/writing-skills/anthropic-best-practices.md	https://(platform|code)\.claude\.com/docs/|https://mintcdn\.com/anthropic-claude-docs/	Vendored doc links/images read as text; not fetched (Network Policy)
+skills/writing-skills/anthropic-best-practices.md	Install required package: `pip install pypdf`	Example text inside a sample skill; not an instruction
+hooks/session-start	^# See: https://github\.com/obra/superpowers/issues/571$	Code comment

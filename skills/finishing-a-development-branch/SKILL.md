@@ -58,7 +58,7 @@ Confirm before merging: merging into the wrong base is expensive to undo.
 Implementation complete. What would you like to do?
 
 1. Merge back to <base-branch> locally
-2. Push and create a Pull Request
+2. Prepare for push (you push and open the PR)
 3. Keep the branch as-is (I'll handle it later)
 
 Which option?
@@ -69,7 +69,7 @@ Which option?
 ```
 Implementation complete. You're on a detached HEAD (externally managed workspace).
 
-1. Push as new branch and create a Pull Request
+1. Prepare for push as a new branch (you push and open the PR)
 2. Keep as-is (I'll handle it later)
 
 Which option?
@@ -92,12 +92,15 @@ cd "$MAIN_ROOT"
 
 # Merge first — verify success before removing anything
 git checkout <base-branch>
-git pull
 git merge <feature-branch>
 
 # Verify tests on merged result
 <test command>
 ```
+
+This merges against the local <base-branch>, which may be behind its
+remote. Do not pull; tell your human partner so they can update it first if
+they want.
 
 If tests fail on the merged result: stop, leave the worktree and branch in
 place, and investigate — nothing has been pushed, so the merge is local
@@ -110,18 +113,19 @@ delete the branch:
 git branch -d <feature-branch>
 ```
 
-### Option 2: Push and Create PR
+### Option 2: Prepare for Push
 
-```bash
+Never push or create the pull/merge request yourself. Confirm the work is
+committed, then give your human partner the exact push command:
+
+```
 git push -u origin <feature-branch>
 # From a detached HEAD, name the new branch on the remote:
 # git push origin HEAD:refs/heads/<new-branch>
 ```
 
-Then create the pull/merge request against <base-branch> with the forge's
-tooling — its CLI if one is available, or the creation URL most forges
-print when you push — following the repo's PR template and conventions if
-present, and report the URL to your human partner.
+Also give them a draft PR title and body against <base-branch>, following
+the repo's PR template and conventions if present.
 
 Keep the worktree — your human partner iterates on PR feedback there.
 
@@ -205,7 +209,7 @@ place. If your platform provides a workspace-exit tool, use it.
 | Option | Merge | Push | Keep Worktree | Cleanup Branch |
 |--------|-------|------|---------------|----------------|
 | 1. Merge locally | yes | - | - | yes |
-| 2. Create PR | - | yes | yes | - |
+| 2. Prepare for push | - | - (partner pushes) | yes | - |
 | 3. Keep as-is | - | - | yes | - |
 | Discard (explicit request only) | - | - | - | yes (force) |
 
@@ -222,4 +226,4 @@ place. If your platform provides a workspace-exit tool, use it.
 | "Removal refused — `--force` is just finishing the cleanup" | The refusal means files exist only in that worktree. `--force` destroys them permanently. Show your human partner and ask. |
 | "The merged-result failure is probably flaky" | A failing merged result stops everything. Branch and worktree stay put while you investigate. |
 | "The base branch is obviously main" | Confirm the fork point or ask. Merging into the wrong base is expensive to undo. |
-| "The push was rejected — force-push will fix it" | A rejected push means the remote moved. Investigate; force-push only on your human partner's explicit request. |
+| "Pushing myself saves them a step" | Network access is your human partner's to perform. Hand over the exact command and stop. |

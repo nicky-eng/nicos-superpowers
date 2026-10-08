@@ -81,7 +81,6 @@ expected_files=(
   references/redaction-policy.md
   references/session-discovery.md
   references/context-safety.md
-  references/github-issues.md
   prompts/analyst-common.md
   prompts/skill-timeline.md
   prompts/plan-adherence.md
@@ -111,6 +110,7 @@ removed_files=(
   references/claude-code-sessions.md
   references/codex-sessions.md
   references/other-harnesses.md
+  references/github-issues.md  # no-network policy: agent never searches or files issues
 )
 for rel in "${removed_files[@]}"; do
   if [ ! -e "$SKILL_DIR/$rel" ]; then
@@ -120,7 +120,7 @@ for rel in "${removed_files[@]}"; do
   fi
 done
 
-removed_reference_hits="$(grep -rn -E 'references/(claude-code-sessions|codex-sessions|other-harnesses)\.md' "$SKILL_DIR" --include='*.md' 2>/dev/null || true)"
+removed_reference_hits="$(grep -rn -E 'references/(claude-code-sessions|codex-sessions|other-harnesses|github-issues)\.md' "$SKILL_DIR" --include='*.md' 2>/dev/null || true)"
 if [ -z "$removed_reference_hits" ]; then
   pass "active skill prose has no references to removed harness recipes"
 else

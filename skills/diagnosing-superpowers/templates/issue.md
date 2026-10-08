@@ -1,6 +1,6 @@
 Title: <skill or symptom>: <one-line observable> (<harness>)
 
-- [x] I searched existing issues and this is not a duplicate (searched: <query terms>; closest: <#n title, or "none">)
+- [ ] I searched existing issues and this is not a duplicate (searched: <query terms>; closest: <#n title, or "none">)
 
 ## Environment (required)
 

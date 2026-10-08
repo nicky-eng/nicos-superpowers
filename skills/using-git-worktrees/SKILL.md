@@ -97,11 +97,13 @@ git worktree add "$path" -b "$BRANCH_NAME"
 cd "$path"
 ```
 
-**Sandbox fallback:** If `git worktree add` fails with a permission error (sandbox denial), tell the user the sandbox blocked worktree creation and you're working in the current directory instead. Then run setup and baseline tests in place.
+**Sandbox fallback:** If `git worktree add` fails with a permission error (sandbox denial), tell the user the sandbox blocked worktree creation and you're working in the current directory instead. Then continue with Step 2 and the baseline tests in place.
 
 ## Step 2: Project Setup
 
-Auto-detect and run appropriate setup:
+Detect the setup command, but do not run it — these commands download
+packages. Show your human partner the exact command and ask whether to run
+it. If dependencies are already installed, go straight to Step 3.
 
 ```bash
 # Node.js

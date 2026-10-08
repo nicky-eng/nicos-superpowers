@@ -60,6 +60,10 @@ If your harness appears here, read its reference file for special instructions:
 - Hermes Agent: `references/hermes-tools.md`
 - Muse: `references/muse-tools.md`
 
+## Network Policy
+
+Never send data to any URL or remote: no `git push`, no PR or issue creation, no `gh`/`curl`/`wget` writes, no uploads. Do not access any URL by default: no web fetch or web search tools, no `git pull`/`fetch`/`clone`, no package installs that download. When a step needs network access, stop, name the exact command, and let your human partner run it. A read is allowed only when your human partner explicitly asks for that specific access in this session. Localhost-only servers you start yourself are fine.
+
 ## User Instructions
 
 User instructions (CLAUDE.md, AGENTS.md, GEMINI.md, etc, direct requests) take precedence over skills, which in turn override default behavior. Only skip skill workflows or instructions when your human partner has explicitly told you to.
