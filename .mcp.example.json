@@ -1,0 +1,25 @@
+{
+  "mcpServers": {
+    "company-vcs": {
+      "type": "http",
+      "url": "<VCS_MCP_URL>",
+      "headers": {
+        "Authorization": "Bearer <VCS_MCP_TOKEN>"
+      }
+    },
+    "company-tickets": {
+      "type": "http",
+      "url": "<TICKETS_MCP_URL>",
+      "headers": {
+        "Authorization": "Bearer <TICKETS_MCP_TOKEN>"
+      }
+    },
+    "company-wiki": {
+      "type": "http",
+      "url": "<WIKI_MCP_URL>",
+      "headers": {
+        "Authorization": "Bearer <WIKI_MCP_TOKEN>"
+      }
+    }
+  }
+}

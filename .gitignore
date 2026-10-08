@@ -7,6 +7,10 @@ node_modules/
 inspo
 triage/
 
+# Local MCP config with real tokens. Copy .mcp.example.json (tracked,
+# placeholders only) to .mcp.json and fill it in; never commit .mcp.json.
+.mcp.json
+
 # Eval harness lives in its own repository, cloned into evals/ for local
 # development (see CLAUDE.md / README.md). It is not part of the published
 # plugin, so the whole directory is ignored here.
